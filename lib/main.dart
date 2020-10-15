@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app/app_textstyles.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -65,53 +67,61 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
+    Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: const Text('Top FAB & Bottom Nav Bar'),
+        backgroundColor: Colors.teal[800],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Container(
+        height: double.infinity,
+      ),
+      // TODO 1-3) Give the Scaffold, NOT the Container, a bottomNavigationBar. Make it's onTap "(_) => null", backgroundColor teal[800] and a current index of 0
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (_) => null,
+        backgroundColor: Colors.teal[800],
+        currentIndex: 0,
+        items: [
+          // TODO 1-4) The BottomNavigationBar takes a list of items. Specifically, BottomNavigationBarItem(s).
+
+          // TODO 1-5) Make the first BottomNavigationBarItem have a white, fast rewind icon and text that says "Bottom"
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fast_rewind, color: Colors.white),
+            title: Text(
+              'Bottom',
+              // TODO 1-6) Let's get into using our resource files. Also, copyWith is one of the most powerful tools you have. It allows you to add or override parameters in several things, including TextStyle. Here, use the custom resource file class "AppTextStyles" to set the style as "normal14". However, put a dot after the 14 and then add "copyWith". Use it to set the color to white. Then, just for fun, use the copyWith to change the font size to 8 and see how it overrides the size set in normal14. (Now change it back!
+              style: AppTextStyles.normal14.copyWith(color: Colors.white),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+          ),
+          // TODO 1-7) Next BottomNavigationBarItem: White pause icon, text = "Navigation". Again, use normal14 in white
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pause, color: Colors.white),
+            title: Text(
+              'Navigation',
+              style: AppTextStyles.normal14.copyWith(color: Colors.white),
             ),
-          ],
+          ),
+          // TODO 1-7) Last one: White fast forward icon, text = "Bar". Make the text sizes and colors match
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fast_forward, color: Colors.white),
+            title: Text(
+              'Bar',
+              style: AppTextStyles.normal14.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+      // TODO 1-8) Now, our FloatingActionButton. onPressed is "(){}", make it teal[300] and set the heroTag to null (it's for hero animations (beyond the scope of this class) It's not normally needed but whenever you have more than one FAB in a page, it becomes necessary). Last, set it's tooltip to "Increment Counter" and the child to an add icon
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.teal[300],
+        heroTag: null,
+        tooltip: 'Increment Counter',
+        child: Icon(
+          Icons.add,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // TODO 1-9) Last, let's move the FAB. Set the floatingActionButtonLocation to FloatingActionButtonLocation.endTop -END
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop, //Change for different locations
     );
   }
 }
