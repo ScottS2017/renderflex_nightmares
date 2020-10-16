@@ -31,13 +31,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+
+
+    int _selectedIndex = 0;
+
+    void _onItemTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
 
   PageController _controller;
 
@@ -70,11 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (_) => null,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: (value) => _onItemTapped(value),
         backgroundColor: Colors.teal[800],
-        currentIndex: 0,
         items: [
           BottomNavigationBarItem(
+
             icon: Icon(Icons.fast_rewind, color: Colors.white),
             title: Text(
               'Bottom',
