@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:renderflex_nightmares/app/app_textstyles.dart';
+import 'package:renderflex_nightmares/widgets/broken_example.dart';
 import 'file:///D:/Flutter/Presentations/renderflex_nightmares/lib/widgets/slot_machine/fun_with_rows_and_columns.dart';
 import 'package:renderflex_nightmares/widgets/constraints_example.dart';
 
@@ -18,11 +19,7 @@ class _HomeState extends State<Home> {
 
   final List<Widget> tabs = [
     ConstraintsExample(),
-    Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.red,
-    ),
+    BrokenExample(),
     FunWithRowsAndColumns(),
   ];
 
@@ -49,21 +46,21 @@ class _HomeState extends State<Home> {
         items: [
           BottomNavigationBarItem(
 
-            icon: Icon(Icons.fast_rewind, color: Colors.white),
+            icon: Icon(Icons.photo_size_select_large, color: Colors.white),
             title: Text(
-              'Bottom',
+              'Fits and Sizes',
               style: AppTextStyles.normal14.copyWith(color: Colors.white),
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.pause, color: Colors.white),
+            icon: Icon(Icons.broken_image, color: Colors.white),
             title: Text(
-              'Navigation',
+              "It's Broken!",
               style: AppTextStyles.normal14.copyWith(color: Colors.white),
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.fast_forward, color: Colors.white),
+            icon: Icon(Icons.tag_faces, color: Colors.white),
             title: Text(
               'Slot Machine!',
               style: AppTextStyles.normal14.copyWith(color: Colors.white),
